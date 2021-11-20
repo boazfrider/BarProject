@@ -1,0 +1,10 @@
+***Welcome Ha-Harosht 11 ! ***
+perss the number for to start some operation :
+
+1-Open new Table
+2-Check if Table is open or close
+2-Get information about opened table : including their orders, total bill , open bill.
+3-Add items to table
+4-Close Bill 
+5-Show menue
+5-Z - end the day !
