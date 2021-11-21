@@ -4,7 +4,8 @@ Bar::Bar(){
     tables.resize(20);
     for(int i=0 ; i<20 ; i++)
     {
-        tables[i]=new Table(i+1);
+        Table* table=new Table(i-1);
+        tables.push_back(table);
     }
 }
 
