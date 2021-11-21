@@ -23,3 +23,7 @@ bool Bar::checkTableIsOpen(int num_of_table)
     
     return  tables[num_of_table-1]->GetTabelIsOpen();
 }
+void Bar::subBillFromTable(int num_of_table, int amount_to_sub)
+{
+    tables[num_of_table-1]->SubOpenBill(amount_to_sub);
+}

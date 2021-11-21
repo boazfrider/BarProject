@@ -17,5 +17,6 @@ class Bar{
     void openNewTabel(int num_of_tabel);
     bool checkTableIsOpen(int num_of_table);
     class TableIsClose : std::exception{};
+    void subBillFromTable(int num_of_table, int amount_to_sub);
 };
 #endif
