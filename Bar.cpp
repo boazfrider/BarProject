@@ -16,6 +16,7 @@ void Bar::openNewTable(int num_of_tabel)
         //need to throw the table is catch
         throw TableIsClose();
         
+        
     }
     tables[num_of_tabel-1]->setTabelCondition(true);
 }

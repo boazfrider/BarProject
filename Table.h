@@ -15,16 +15,19 @@ class Table{
 
     public:
     Table(int tabel_number);
-    ~Table()=default;
+    ~Table();
     int getTabelNumber();
     int getTotalBill();
+    int addToTotalBill(int amount_to_add);
     int getOpenBill();
+    int addToOpenBill(int amount_to_add);
     bool GetTabelIsOpen();
     void setTabelCondition(bool cond);
-    void AddBill(int adding_price);
     void SubOpenBill(int paid_amount);
     void AddItem(std::string item);
     void AddPrices(int price);
+
+    friend std::ostream& operator<<(std::ostream& os , const Table* table);
 };
 
 #endif
