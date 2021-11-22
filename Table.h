@@ -14,15 +14,15 @@ class Table{
         std::vector<int> prices ;
 
     public:
-    Table(int tabel_number);
+    Table(int table_number);
     ~Table();
     int getTabelNumber();
     int getTotalBill();
     int addToTotalBill(int amount_to_add);
     int getOpenBill();
     int addToOpenBill(int amount_to_add);
-    bool GetTabelIsOpen();
-    void setTabelCondition(bool cond);
+    bool GetTableIsOpen();
+    void setTableCondition(bool cond);
     void SubOpenBill(int paid_amount);
     void AddItem(std::string item);
     void AddPrices(int price);
