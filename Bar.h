@@ -20,9 +20,8 @@ class Bar{
 
     //Getters and Setters 
     int getTotalIncome();
-    int addTototalIncome(int amount_to_add);
     int getOpenIncome();
-    int addOpenIncome(int amount_to_add);
+    
     int getTotalSeatedTables();
     void addSeatedTable(); //increase by 1 .
     static Table* askAndGetTable();
@@ -41,7 +40,7 @@ class Bar{
 
     //static function - only function for inside use.
     static bool checkTableIsOpen(int num_of_table);
-   
-    
+    static int addTototalIncome(int amount_to_add);
+    static int addOpenIncome(int amount_to_add);
 };
 #endif
