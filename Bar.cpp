@@ -9,7 +9,7 @@ Bar::Bar(){
     }
 }
 
-void Bar::openNewTabel(int num_of_tabel)
+void Bar::openNewTable(int num_of_tabel)
 {
     if ( tables[num_of_tabel-1]->GetTabelIsOpen())
     {
