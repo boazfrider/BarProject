@@ -25,7 +25,7 @@ class Bar{
     int addOpenIncome(int amount_to_add);
     int getTotalSeatedTables();
     void addSeatedTable(); //increase by 1 .
-    Table* getTable(int num_of_table);
+    static Table* askAndGetTable();
 
     //System Functions.
     void welcomePage();
@@ -41,7 +41,7 @@ class Bar{
 
     //static function - only function for inside use.
     static bool checkTableIsOpen(int num_of_table);
-    static Table* andAndGetTable();
+   
     
 };
 #endif
