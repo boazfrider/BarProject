@@ -14,6 +14,10 @@ class Bar{
         int total_seated_table;
         std::vector<Table*> tables;
         std::map<std::string, int> menu;
+
+       
+
+
     public:
     Bar(); 
     Bar(int num_of_tables_to_open);
@@ -24,8 +28,8 @@ class Bar{
     int getOpenIncome();
     
     int getTotalSeatedTables();
-    void addSeatedTable(); //increase by 1 .
-    static Table* askAndGetTable();
+    void addSeatedTable();
+    Table* askAndGetTable();
     static  std::map<std::string, int> getMenu();
 
     //System Functions.
@@ -44,5 +48,6 @@ class Bar{
     static bool checkTableIsOpen(int num_of_table);
     static int addTototalIncome(int amount_to_add);
     static int addOpenIncome(int amount_to_add);
-};
+}; 
+
 #endif

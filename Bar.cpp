@@ -55,4 +55,32 @@ Bar::Bar(int num_of_tables_to_open){
     total_seated_table=0;
     menu=getMenu();
 }
+Bar::~Bar(){
+
+}
+
+int Bar::getTotalIncome(){
+    return total_income;
+}
+int Bar::getOpenIncome(){
+    return total_open_income;
+}
+int Bar::getTotalSeatedTables(){
+    return total_seated_table;
+}
+void Bar::addSeatedTable(){
+    total_seated_table++;
+}
+Table* Bar::askAndGetTable(){
+    std::cout<<"Which Table ?"<<std::endl;
+    int num;
+    std::cin>>num;
+    if(num>tables.size()|| num<0)
+    {
+        std::cerr<<"NUMBER OF TABLE DOESENT EXIST.";
+
+        //MAYBE THROW ERROR ?
+    }
+    return tables.at(num-1);
+}
 

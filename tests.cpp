@@ -1,5 +1,5 @@
 // #include "Tabel.h"
-// #include"Bar.h"
+ #include"Bar.h"
 #include<iostream>
 #include<assert.h>
 #include<fstream>
@@ -67,10 +67,18 @@ void TEST1(){
     }
     
 }
+// void TEST2(){
+//     Bar bar(15);
+//     bar.askAndGetTable();
+    
+// }
 int main()
 {
-    TEST1();
+   // TEST1();
     //    TEST2();
     //    TEST3();
+    
+   //TEST2();
+
    std::cout<<("all test pass");
 }
