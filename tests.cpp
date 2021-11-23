@@ -40,22 +40,27 @@
 //         std::cout<<"error catch";
 //     }
 // }
-void TEST1(){
+std::map<std::string, int> getmenu(){
     std::ifstream menu_file("menu.txt");
-    std::map<std::string, int> menue;
-    std::string menue_line;
+    std::map<std::string, int> menu;
+    std::string menu_line;
     std::string price;
+    
     if(!menu_file){
-        std::cerr<<"cannot open file "<<"menue.txt"<<std::endl;
+        std::cerr<<"cannot open file "<<"menu.txt"<<std::endl;
     }
-    while(std::getline(menu_file,menue_line))
+     while(std::getline(menu_file,menu_line))
     {
         std::getline(menu_file,price);
         int priceint=stoi(price);
-      //  std::cout<<menue_line<<" "<<priceint<<std::endl;
-        menue.insert({menue_line,priceint});
-    
+        menu.insert({menu_line,priceint});
     }
+    return menu;
+}
+void TEST1(){
+    std::ifstream menu_file("menu.txt");
+    std::map<std::string, int> menue;
+    menue=getmenu();
     for (auto itr = menue.begin(); itr != menue.end(); ++itr) {
         std::cout << itr->first
              << '\t' << itr->second << '\n';

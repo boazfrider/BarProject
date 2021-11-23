@@ -13,7 +13,7 @@ class Bar{
         int total_open_income;
         int total_seated_table;
         std::vector<Table*> tables;
-        std::map<std::string, int> menue;
+        std::map<std::string, int> menu;
     public:
     Bar(); 
     Bar(int num_of_tables_to_open);
@@ -26,6 +26,7 @@ class Bar{
     int getTotalSeatedTables();
     void addSeatedTable(); //increase by 1 .
     static Table* askAndGetTable();
+    static  std::map<std::string, int> getMenu();
 
     //System Functions.
     void welcomePage();
@@ -33,7 +34,7 @@ class Bar{
     void openNewTable();
     void createOrder();
     void removeElementFromTable();
-    void showMenue();
+    void showMenu();
     void closeBill();
     void showInfoOfTable();
     void daySummery();
