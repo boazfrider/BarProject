@@ -84,3 +84,12 @@ Table* Bar::askAndGetTable(){
     return tables.at(num-1);
 }
 
+bool Bar::checkTableIsOpen(int num_of_table){
+    return tables[num_of_table]->GetTableIsOpen();
+}
+void Bar::addTototalIncome(int amount_to_add){
+    total_income+=amount_to_add;
+}
+void Bar::addOpenIncome(int amount_to_add){
+    total_open_income+=amount_to_add;
+}

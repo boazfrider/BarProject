@@ -26,28 +26,27 @@ class Bar{
     //Getters and Setters 
     int getTotalIncome();
     int getOpenIncome();
-    
     int getTotalSeatedTables();
     void addSeatedTable();
     Table* askAndGetTable();
-    static  std::map<std::string, int> getMenu();
+    std::map<std::string, int> getMenu();
 
+    //static function - only function for inside use.
+    bool checkTableIsOpen(int num_of_table);
+    void addTototalIncome(int amount_to_add);
+    void addOpenIncome(int amount_to_add); 
+    
     //System Functions.
     void welcomePage();
     void openNewTable(int num_of_tabel);
     void openNewTable();
     void createOrder();
     void removeElementFromTable();
-    void showMenu();
     void closeBill();
     void showInfoOfTable();
     void daySummery();
     void endDay();    
-
-    //static function - only function for inside use.
-    static bool checkTableIsOpen(int num_of_table);
-    static int addTototalIncome(int amount_to_add);
-    static int addOpenIncome(int amount_to_add);
+    void showMenu();
 }; 
-
+ 
 #endif

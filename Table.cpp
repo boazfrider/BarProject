@@ -1,35 +1,44 @@
 #include"Table.h"
 
-// Table::Table(int table_number):table_number(table_number){
-//     total_bill=0;
-//     open_bill=0;
-//     tabel_open=false;
-// }
-// int Table::getTabelNumber(){ 
-//     return table_number;
-// }
-// int Table::getTotalBill(){
-//     return total_bill;
-// }
-// int Table::getOpenBill(){return open_bill;}
-// bool Table::GetTabelIsOpen(){
-//     return tabel_open;
+Table::Table(int table_number):table_number(table_number){
+    total_bill=0;
+    open_bill=0;
+    table_catch=false;
+}
+Table::~Table(){
 
-// }
-// void Table::AddBill(int adding_amount){
-//     total_bill+=adding_amount;
-//     open_bill+=adding_amount;
-// }
-// void Table::SubOpenBill(int paid_amount){
-//     open_bill-=paid_amount;
-// }
-// void Table::setTabelCondition(bool cond){
-//     tabel_open=cond;
-// }
-// void Table::AddItem(std::string item){
-//     items.push_back(item);
-// }
-// void Table::AddPrices(int price)
-// {
-//     prices.push_back(price);
-// }
+}
+
+int Table::getTabelNumber(){ 
+    return table_number;
+}
+int Table::getTotalBill(){
+    return total_bill;
+}
+int Table::getOpenBill()
+{
+    return open_bill;
+}
+bool Table::GetTableIsOpen(){
+    return table_catch;
+
+}
+void Table::addToTotalBill(int amount_to_add){
+    total_bill+=amount_to_add;
+}
+void Table::addToOpenBill(int amount_to_add){
+    open_bill+=amount_to_add;
+}
+void Table::setTableCondition(bool cond){
+    table_catch=cond;
+}
+void Table::SubOpenBill(int paid_amount){
+    open_bill-=paid_amount;
+}
+void Table::AddItem(std::string item,int price){
+
+    items.push_back(item);
+    prices.push_back(price);
+    addToTotalBill(price);
+    addToOpenBill(price);
+}
