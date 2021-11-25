@@ -25,7 +25,7 @@ std::map<int , Item> Bar::getMenu(){
         std::getline(menu_file,price);
         int priceint=stoi(price);
         Item item(menu_line,priceint);
-        //std::cout<<menu_line<<" "<<priceint<<std::endl;
+        // std::cout<<item_number <<"-"<<item.getName() << "-"<<item.getPrice()<<std::endl;
         menu.insert({item_number,item});
         item_number++;
     }
@@ -97,6 +97,7 @@ void Bar::addOpenIncome(int amount_to_add){
     total_open_income+=amount_to_add;
 }
 void Bar::welcomePage(){
+    std::cout<<"HELLO";
 
 }
 
@@ -116,9 +117,23 @@ void Bar::createOrder(){
     Table* table=askAndGetTable();
     std::cout<<"enter -1 to end the order";
     showMenu();
-    std::string item;
-    int price;
+    int index;
+    std::cout<<"Enter the number of the item"<<std::endl;
+    std::cin>>index;
+    while(index!=-1)
+    {
+        table->AddItem(&menu[index]);
+        std::cin>>index;
+    }
+    std::cout<<"THE ITEMS ADDED TO THE TABLE !";
+    table->showInfo();
+    welcomePage();
 
-    std::cin
+   
     
+}
+void Bar::showMenu(){
+    for(auto& t : menu){
+        std::cout<<t.first <<"-"<<t.second.getName() << "-"<<t.second.getPrice()<<std::endl;
+    }
 }

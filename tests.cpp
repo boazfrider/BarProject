@@ -1,5 +1,6 @@
 // #include "Tabel.h"
- #include"Bar.h"
+#include"Bar.h"
+#include "Item.h"
 #include<iostream>
 #include<assert.h>
 #include<fstream>
@@ -40,36 +41,36 @@
 //         std::cout<<"error catch";
 //     }
 // }
-std::map<int , Item> Bar::getMenu(){
-    std::ifstream menu_file("menu.txt");
-    std::map<int , Item> menu;
-    std::string menu_line;
-    std::string price;
-    if(!menu_file){
-        std::cerr<<"cannot open file "<<"menu.txt"<<std::endl;
-    }
-    int item_number=0;
-     while(std::getline(menu_file,menu_line))
-    {
-        std::getline(menu_file,price);
-        int priceint=stoi(price);
-        Item item(menu_line,priceint);
-        std::cout<<item_number <<"-"<<item.getName() << "-"<<item.getPrice()<<std::endl;
-        menu.insert({item_number,item});
-        item_number++;
-    }
-    return menu;
-}
-void TEST1(){
-    std::ifstream menu_file("menu.txt");
-    std::map<std::string, int> menue;
-    menue=getmenu();
-    for (auto itr = menue.begin(); itr != menue.end(); ++itr) {
-        std::cout << itr->first
-             << '\t' << itr->second << '\n';
-    }
+// std::map<int , Item> Bar::getMenu(){
+//     std::ifstream menu_file("menu.txt");
+//     std::map<int , Item> menu;
+//     std::string menu_line;
+//     std::string price;
+//     if(!menu_file){
+//         std::cerr<<"cannot open file "<<"menu.txt"<<std::endl;
+//     }
+//     int item_number=0;
+//      while(std::getline(menu_file,menu_line))
+//     {
+//         std::getline(menu_file,price);
+//         int priceint=stoi(price);
+//         Item item(menu_line,priceint);
+//         std::cout<<item_number <<"-"<<item.getName() << "-"<<item.getPrice()<<std::endl;
+//         menu.insert({item_number,item});
+//         item_number++;
+//     }
+//     return menu;
+// }
+// void TEST1(){
+//     std::ifstream menu_file("menu.txt");
+//     std::map<std::string, int> menue;
+//     menue=getMenu();
+//     for (auto itr = menue.begin(); itr != menue.end(); ++itr) {
+//         std::cout << itr->first
+//              << '\t' << itr->second << '\n';
+//     }
     
-}
+// }
 void TEST2(){
     Bar bar(15);
     bar.askAndGetTable();
@@ -77,7 +78,11 @@ void TEST2(){
 }
 void TEST3(){
     Bar bar(15);
-    bar.getMenu();
+    bar.showMenu();
+}
+void TEST4(){
+    Bar bar(10);
+    bar.createOrder();
 }
 int main()
 {
@@ -86,7 +91,7 @@ int main()
     //    TEST3();
     
  //  TEST2();
- TEST3();
+ TEST4();
 
    std::cout<<("all test pass");
 }

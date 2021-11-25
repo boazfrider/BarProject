@@ -1,9 +1,9 @@
 #ifndef _TABLE_H
 #define _TABEL_H
-#include<Item.h>
-#include<iostream>
-#include<string>
-#include<vector>
+#include "Item.h"
+#include <iostream>
+#include <string>
+#include <vector>
 class Table{
     private:
         int table_number;
@@ -25,7 +25,7 @@ class Table{
     void setTableCondition(bool cond);
     void SubOpenBill(int paid_amount);
     void AddItem(Item* item);
-    
+    void showInfo();
 
     friend std::ostream& operator<<(std::ostream& os , const Table* table);
 };

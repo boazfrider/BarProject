@@ -1,12 +1,13 @@
 #ifndef _BAR_H
 #define _BAR_H
 #include "Table.h"
+#include "Item.h"
 //more change
 #include<iostream>
 #include<fstream>
 #include<vector>
 #include<map>
-#include"Item.h"
+
 
 class Bar{
     private:

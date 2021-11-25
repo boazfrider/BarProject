@@ -1,5 +1,5 @@
 #ifndef _Item_H
-#define Item_H
+#define _Item_H
 
 #include<iostream>
 
@@ -8,6 +8,7 @@ class Item{
         std::string name;
         int price;
     public:
+        Item()=default;
         Item(std::string name,int price);
         Item(const Item& item)=default;
         Item& operator=(const Item& item)=default;

@@ -38,5 +38,16 @@ void Table::SubOpenBill(int paid_amount){
 void Table::AddItem(Item* item){
 
     items.push_back(item);
+    addToOpenBill(item->getPrice());
+    addToTotalBill(item->getPrice());
     
+}
+void Table::showInfo(){
+    std::cout<<"**** TABLE NUMBER :" <<table_number+1 <<"****"<<std::endl;
+    std::cout<<"Items:"<<std::endl;
+    for(int i=0 ; i<items.size() ; i++)
+    {
+        std::cout<<items[i]->getName() <<"-"<<items[i]->getPrice()<<std::endl;
+
+    }
 }
