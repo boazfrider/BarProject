@@ -35,10 +35,8 @@ void Table::setTableCondition(bool cond){
 void Table::SubOpenBill(int paid_amount){
     open_bill-=paid_amount;
 }
-void Table::AddItem(std::string item,int price){
+void Table::AddItem(Item* item){
 
     items.push_back(item);
-    prices.push_back(price);
-    addToTotalBill(price);
-    addToOpenBill(price);
+    
 }

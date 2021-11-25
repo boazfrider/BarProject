@@ -1,6 +1,6 @@
 #ifndef _TABLE_H
 #define _TABEL_H
-
+#include<Item.h>
 #include<iostream>
 #include<string>
 #include<vector>
@@ -10,8 +10,8 @@ class Table{
         int total_bill;
         int open_bill;
         bool table_catch;
-        std::vector<std::string> items;
-        std::vector<int> prices ;
+        std::vector<Item*> items;
+        
 
     public:
     Table(int table_number);
@@ -19,12 +19,12 @@ class Table{
     int getTabelNumber();
     int getTotalBill();
     int getOpenBill(); 
-    bool GetTableIsOpen();
+    bool GetTableIsOpen(); //true=catch ! false=empty table
     void addToTotalBill(int amount_to_add);
     void addToOpenBill(int amount_to_add);
     void setTableCondition(bool cond);
     void SubOpenBill(int paid_amount);
-    void AddItem(std::string item,int price);
+    void AddItem(Item* item);
     
 
     friend std::ostream& operator<<(std::ostream& os , const Table* table);

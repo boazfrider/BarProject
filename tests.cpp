@@ -40,20 +40,23 @@
 //         std::cout<<"error catch";
 //     }
 // }
-std::map<std::string, int> getmenu(){
+std::map<int , Item> Bar::getMenu(){
     std::ifstream menu_file("menu.txt");
-    std::map<std::string, int> menu;
+    std::map<int , Item> menu;
     std::string menu_line;
     std::string price;
-    
     if(!menu_file){
         std::cerr<<"cannot open file "<<"menu.txt"<<std::endl;
     }
+    int item_number=0;
      while(std::getline(menu_file,menu_line))
     {
         std::getline(menu_file,price);
         int priceint=stoi(price);
-        menu.insert({menu_line,priceint});
+        Item item(menu_line,priceint);
+        std::cout<<item_number <<"-"<<item.getName() << "-"<<item.getPrice()<<std::endl;
+        menu.insert({item_number,item});
+        item_number++;
     }
     return menu;
 }
@@ -67,18 +70,23 @@ void TEST1(){
     }
     
 }
-// void TEST2(){
-//     Bar bar(15);
-//     bar.askAndGetTable();
+void TEST2(){
+    Bar bar(15);
+    bar.askAndGetTable();
     
-// }
+}
+void TEST3(){
+    Bar bar(15);
+    bar.getMenu();
+}
 int main()
 {
    // TEST1();
     //    TEST2();
     //    TEST3();
     
-   //TEST2();
+ //  TEST2();
+ TEST3();
 
    std::cout<<("all test pass");
 }

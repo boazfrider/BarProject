@@ -11,20 +11,23 @@
 
 
 
-std::map<std::string, int> Bar::getMenu(){
+std::map<int , Item> Bar::getMenu(){
     std::ifstream menu_file("menu.txt");
-    std::map<std::string, int> menu;
+    std::map<int , Item> menu;
     std::string menu_line;
     std::string price;
     if(!menu_file){
         std::cerr<<"cannot open file "<<"menu.txt"<<std::endl;
     }
+    int item_number=0;
      while(std::getline(menu_file,menu_line))
     {
         std::getline(menu_file,price);
         int priceint=stoi(price);
+        Item item(menu_line,priceint);
         //std::cout<<menu_line<<" "<<priceint<<std::endl;
-        menu.insert({menu_line,priceint});
+        menu.insert({item_number,item});
+        item_number++;
     }
     return menu;
 }
@@ -78,7 +81,7 @@ Table* Bar::askAndGetTable(){
     if(num>tables.size()|| num<0)
     {
         std::cerr<<"NUMBER OF TABLE DOESENT EXIST.";
-
+        throw std::overflow_error("number dosent exist.");
         //MAYBE THROW ERROR ?
     }
     return tables.at(num-1);
@@ -92,4 +95,30 @@ void Bar::addTototalIncome(int amount_to_add){
 }
 void Bar::addOpenIncome(int amount_to_add){
     total_open_income+=amount_to_add;
+}
+void Bar::welcomePage(){
+
+}
+
+void Bar::openNewTable(int num_of_table){
+    if(num_of_table>tables.size() || num_of_table<0)
+    {
+        std::cerr<<"NUMBER OF TABLE DOESNT EXIST";
+    }
+    if(tables[num_of_table-1]->GetTableIsOpen()==true)
+    {
+        std::cerr<<"table if already taken";
+    }
+    else
+        tables[num_of_table-1]->setTableCondition(true);
+}
+void Bar::createOrder(){
+    Table* table=askAndGetTable();
+    std::cout<<"enter -1 to end the order";
+    showMenu();
+    std::string item;
+    int price;
+
+    std::cin
+    
 }

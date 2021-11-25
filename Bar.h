@@ -6,6 +6,7 @@
 #include<fstream>
 #include<vector>
 #include<map>
+#include"Item.h"
 
 class Bar{
     private:
@@ -13,7 +14,7 @@ class Bar{
         int total_open_income;
         int total_seated_table;
         std::vector<Table*> tables;
-        std::map<std::string, int> menu;
+        std::map<int , Item> menu;
 
        
 
@@ -29,7 +30,7 @@ class Bar{
     int getTotalSeatedTables();
     void addSeatedTable();
     Table* askAndGetTable();
-    std::map<std::string, int> getMenu();
+    std::map<int , Item> getMenu();
 
     //static function - only function for inside use.
     bool checkTableIsOpen(int num_of_table);
@@ -38,8 +39,8 @@ class Bar{
     
     //System Functions.
     void welcomePage();
-    void openNewTable(int num_of_tabel);
-    void openNewTable();
+    void openNewTable(int num_of_table);
+    //void openNewTable();
     void createOrder();
     void removeElementFromTable();
     void closeBill();
