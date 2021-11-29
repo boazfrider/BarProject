@@ -132,6 +132,16 @@ void Bar::createOrder(){
    
     
 }
+void Bar::removeElementFromTable(){
+
+}
+void Bar::closeBill(){
+    Table* table = askAndGetTable();
+    int amount=0;
+    std::cout<<"pay amount ?" <<std::endl;
+    std::cin>>amount;
+    table->SubOpenBill(amount);
+}
 void Bar::showMenu(){
     for(auto& t : menu){
         std::cout<<t.first <<"-"<<t.second.getName() << "-"<<t.second.getPrice()<<std::endl;
