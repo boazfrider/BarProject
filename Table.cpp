@@ -42,12 +42,16 @@ void Table::AddItem(Item* item){
     addToTotalBill(item->getPrice());
     
 }
-void Table::showInfo(){
-    std::cout<<"**** TABLE NUMBER :" <<table_number+1 <<"****"<<std::endl;
-    std::cout<<"Items:"<<std::endl;
-    for(int i=0 ; i<items.size() ; i++)
-    {
-        std::cout<<items[i]->getName() <<"-"<<items[i]->getPrice()<<std::endl;
 
+std::ostream& operator<<(std::ostream& os , const Table& table){
+    os<<"in";
+    os << "Table number : "<<table.table_number <<std::endl;
+    os << "Total Bill :" <<table.total_bill <<std::endl;
+    os<< "Open Bill : "<<table.open_bill << std::endl;
+    os<<"Items"<<std::endl;
+    for(int i=0 ; i < table.items.size() ; i++)
+    {
+        os<<table.items[i]->getName()<<"-"<<table.items[i]->getPrice()<<std::endl;
     }
+    return os;
 }

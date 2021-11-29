@@ -83,6 +83,7 @@ void TEST3(){
 void TEST4(){
     Bar bar(10);
     bar.createOrder();
+    bar.showInfoOfTable();
 }
 int main()
 {

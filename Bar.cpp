@@ -126,7 +126,6 @@ void Bar::createOrder(){
         std::cin>>index;
     }
     std::cout<<"THE ITEMS ADDED TO THE TABLE !";
-    table->showInfo();
     welcomePage();
 
    
@@ -141,6 +140,10 @@ void Bar::closeBill(){
     std::cout<<"pay amount ?" <<std::endl;
     std::cin>>amount;
     table->SubOpenBill(amount);
+}
+void Bar::showInfoOfTable(){
+    Table* table = askAndGetTable();
+    std::cout << *table;
 }
 void Bar::showMenu(){
     for(auto& t : menu){
