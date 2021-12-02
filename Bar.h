@@ -40,7 +40,7 @@ class Bar{
     
     //System Functions.
     void welcomePage();
-    void openNewTable(int num_of_table);
+    void openNewTable();
     //void openNewTable();
     void createOrder();
     void removeElementFromTable();

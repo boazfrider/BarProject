@@ -88,9 +88,9 @@ void TEST4(){
 }
 void TEST5(){
     Bar bar(10);
-    bar.createOrder();
+    bar.welcomePage();
     
-    bar.closeBill();
+   
 }
 int main()
 {
