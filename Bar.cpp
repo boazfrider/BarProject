@@ -110,6 +110,7 @@ void Bar::closeBill(int table_number , int amount){
     if(amount > table->getOpenBill())
     {
         throw IlleglArgument();
+        
     }
 
 
