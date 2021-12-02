@@ -109,7 +109,7 @@ void Bar::closeBill(int table_number , int amount){
     Table* table = GetTable(table_number);
     if(amount > table->getOpenBill())
     {
-        throw std::overflow_error("amount bigger then bill");
+        throw IlleglArgument();
     }
 
 

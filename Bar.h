@@ -2,6 +2,7 @@
 #define _BAR_H
 #include "Table.h"
 #include "Item.h"
+#include "Exceptions.h"
 //more change
 #include<iostream>
 #include<fstream>
