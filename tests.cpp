@@ -7,88 +7,56 @@
 #include<vector>
 #include<map>
 #include<string>
-// void TEST1(){
-//     Table table1(1);
-//     assert(table1.getTotalBill()==0);
-//     assert(table1.getTabelNumber()==1);
-//     assert(table1.GetTabelIsOpen()==false);
-//     assert(table1.getOpenBill()==0);
-// }
-// void TEST2(){
-//     Table table1(1);
-//     assert(table1.getTotalBill()==0);
-//     assert(table1.getTabelNumber()==1);
-//     assert(table1.GetTabelIsOpen()==false);
-//     assert(table1.getOpenBill()==0);
-//     table1.AddBill(100);
-//     assert(table1.getTotalBill()==100);
-//     assert(table1.getOpenBill()==100);
-//     table1.SubOpenBill(50);
-//     assert(table1.getOpenBill()==50);
-// }
-// void TEST3(){
-//     Bar bar;
-//  //   assert(bar.tabels[0]->getTotalBill()==0);
-//     bar.openNewTabel(3);
-//     bar.openNewTabel(4);
-//     assert(bar.checkTableIsOpen(3)==true);
-//     assert(bar.checkTableIsOpen(4)==true);
-//     try{
-//         bar.openNewTabel(3);
-//     }
-//     catch(Bar::TableIsClose& err)
+
+// void Bar::welcomePage(){
+//     std::cout<<"    WELCOME PAGE-MAIN PAGE    "<<std::endl;
+//     std::cout<<"1 - Open New Table"<<std::endl<< "2 - Create New Order"<<std::endl <<"3 - Remove Item from Table"<<std::endl;
+//     std::cout<<"4 - Close Bill" <<std::endl;
+//     std::cout<<"5 - Show Information about table"<<std::endl;
+//     int funcnum;
+//     std::cout<<"Which operation would you like to do ? "<<std::endl;
+//     std::cin>>funcnum;
+//     switch (funcnum)
 //     {
-//         std::cout<<"error catch";
-//     }
-// }
-// std::map<int , Item> Bar::getMenu(){
-//     std::ifstream menu_file("menu.txt");
-//     std::map<int , Item> menu;
-//     std::string menu_line;
-//     std::string price;
-//     if(!menu_file){
-//         std::cerr<<"cannot open file "<<"menu.txt"<<std::endl;
-//     }
-//     int item_number=0;
-//      while(std::getline(menu_file,menu_line))
-//     {
-//         std::getline(menu_file,price);
-//         int priceint=stoi(price);
-//         Item item(menu_line,priceint);
-//         std::cout<<item_number <<"-"<<item.getName() << "-"<<item.getPrice()<<std::endl;
-//         menu.insert({item_number,item});
-//         item_number++;
-//     }
-//     return menu;
-// }
-// void TEST1(){
-//     std::ifstream menu_file("menu.txt");
-//     std::map<std::string, int> menue;
-//     menue=getMenu();
-//     for (auto itr = menue.begin(); itr != menue.end(); ++itr) {
-//         std::cout << itr->first
-//              << '\t' << itr->second << '\n';
-//     }
+//         case (1):
+//         openNewTable();
+//         break;
     
+//         case (2):
+//         createOrder();
+//         /* code */
+//         break;
+//         case (3):
+//         removeElementFromTable();
+//         /* code */
+//         break;
+//         case (4):
+//         closeBill();
+//         /* code */
+//         break;
+//         case (5):
+//         showInfoOfTable();
+//         /* code */
+//         break;
+//     }
+
 // }
-void TEST2(){
-    Bar bar(15);
-    bar.askAndGetTable();
-    
-}
-void TEST3(){
-    Bar bar(15);
-    bar.showMenu();
-}
-void TEST4(){
-    Bar bar(10);
-    bar.createOrder();
-    bar.showInfoOfTable();
-    bar.closeBill();
-}
+
 void TEST5(){
     Bar bar(10);
-    bar.welcomePage();
+    try{
+    bar.openNewTable(1);
+    bar.addItemToTable(1,1); //1-Half hoegaarden = 25 sehkel.
+    bar.addItemToTable(1,2);
+    bar.addItemToTable(1,7);
+    bar.showInfoOfTable(1);
+    bar.closeBill(1,350);
+    bar.showInfoOfTable(1);
+    }
+    catch(std::overflow_error& err)
+    {
+        std::cout<<err.what();
+    }
     
    
 }

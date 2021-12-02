@@ -11,7 +11,7 @@
 
 
 
-std::map<int , Item> Bar::getMenu(){
+std::map<int , Item> Bar::setMenu(){
     std::ifstream menu_file("menu.txt");
     std::map<int , Item> menu;
     std::string menu_line;
@@ -31,6 +31,9 @@ std::map<int , Item> Bar::getMenu(){
     }
     return menu;
 }
+std::map<int , Item> Bar::getMenu(){
+    return menu;
+}
 
 
 Bar::Bar(){
@@ -44,7 +47,7 @@ Bar::Bar(){
     total_income=0;
     total_open_income=0;
     total_seated_table=0;
-    menu=getMenu();
+    menu=setMenu();
 }
 
 Bar::Bar(int num_of_tables_to_open){
@@ -56,7 +59,7 @@ Bar::Bar(int num_of_tables_to_open){
     total_income=0;
     total_open_income=0;
     total_seated_table=0;
-    menu=getMenu();
+    menu=setMenu();
 }
 Bar::~Bar(){
 
@@ -74,33 +77,8 @@ int Bar::getTotalSeatedTables(){
 void Bar::addSeatedTable(){
     total_seated_table++;
 }
-Table* Bar::askAndGetTable(){
-    std::cout<<"Which Table ?"<<std::endl;
-    int num;
-    std::cin>>num;
-    if(num>tables.size()|| num<0)
-    {
-        std::cerr<<"NUMBER OF TABLE DOESENT EXIST.";
-        throw std::overflow_error("number dosent exist.");
-        //MAYBE THROW ERROR ?
-    }
-   if(tables.at(num-1)->GetTableIsOpen()==false)
-   {
-      std::cout<<"The table is close. Whould you like to open this table? Y/N"<<std::endl;
-        char ch;
-        std::cin >> ch;
-        if(ch=='Y')
-        {
-            openNewTable();
-            return tables.at(num-1);
-        }
-        else{
-            std::cout<<"return to start"<<std::endl;
-            throw std::overflow_error("Not the right table");
-        }
-   }
-    
-    return tables.at(num-1);
+Table* Bar::GetTable(int table_number){
+    return tables[table_number-1];
 }
 
 bool Bar::checkTableIsOpen(int num_of_table){
@@ -112,116 +90,40 @@ void Bar::addTototalIncome(int amount_to_add){
 void Bar::addOpenIncome(int amount_to_add){
     total_open_income+=amount_to_add;
 }
-void Bar::welcomePage(){
-    std::cout<<"    WELCOME PAGE-MAIN PAGE    "<<std::endl;
-    std::cout<<"1 - Open New Table"<<std::endl<< "2 - Create New Order"<<std::endl <<"3 - Remove Item from Table"<<std::endl;
-    std::cout<<"4 - Close Bill" <<std::endl;
-    std::cout<<"5 - Show Information about table"<<std::endl;
-    int funcnum;
-    std::cout<<"Which operation would you like to do ? "<<std::endl;
-    std::cin>>funcnum;
-    switch (funcnum)
-    {
-        case (1):
-        openNewTable();
-        break;
-    
-        case (2):
-        createOrder();
-        /* code */
-        break;
-        case (3):
-        removeElementFromTable();
-        /* code */
-        break;
-        case (4):
-        closeBill();
-        /* code */
-        break;
-        case (5):
-        showInfoOfTable();
-        /* code */
-        break;
-    }
 
+void Bar::openNewTable(int num_of_table){
+    tables[num_of_table-1]->setTableCondition(true);
 }
 
-void Bar::openNewTable(){
-    int num_of_table;
-    std::cout<<"Which Table to open ? ";
-    std::cin>>num_of_table;
-    if(num_of_table>tables.size() || num_of_table<0)
-    {
-        std::cerr<<"NUMBER OF TABLE DOESNT EXIST";
-    }
-    if(tables[num_of_table-1]->GetTableIsOpen()==true)
-    {
-        std::cerr<<"table if already taken";
-    }
-    else
-        tables[num_of_table-1]->setTableCondition(true);
-    welcomePage();
-}
-void Bar::createOrder(){
-    std::cout<<"    CREATE ORDER SECTION    " <<std::endl;
-    Table* table;
-try{
-    table=askAndGetTable();
-}
-catch(std::overflow_error& err){
-    return;
-}
-    
-  
-    std::cout<<"enter -1 to end the order";
-    showMenu();
-    int index;
-    std::cout<<"Enter the number of the item"<<std::endl;
-    std::cin>>index;
-    while(index!=-1)
-    {
-        table->AddItem(&menu[index]);
-        std::cin>>index;
-    }
-    std::cout<<"THE ITEMS ADDED TO THE TABLE !";
-    welcomePage();
+void Bar::addItemToTable(int num_of_table,int item_index){
+    tables[num_of_table-1]->AddItem(&menu[item_index]);
 
-   
-    
 }
 void Bar::removeElementFromTable(){
 
 }
-void Bar::closeBill(){
-    again1: std::cout<<"    CLOSE BILL SECTION    " <<std::endl;
-    Table* table ;
-    
-    table= askAndGetTable();    
-    int amount=0;
-    again: std::cout<<"pay amount ?" <<std::endl;
-    std::cin>>amount;
-    try{
-            
-            table->SubOpenBill(amount);
 
-    }
-    catch(std::overflow_error& err)
+
+
+void Bar::closeBill(int table_number , int amount){
+    Table* table = GetTable(table_number);
+    if(amount > table->getOpenBill())
     {
-        goto again;
+        throw std::overflow_error("amount bigger then bill");
     }
-    
-    if(table->getOpenBill()==0){
+
+
+    tables[table_number-1]->SubOpenBill(amount);
+    if( tables[table_number-1]->getOpenBill()==0){
         std::ofstream history;
         history.open("history.txt", std::ios::out | std::ios::app);
-        history << *table;
+        history << *tables[table_number-1];
         history.close();
     }
-    welcomePage();
+   
 }
-void Bar::showInfoOfTable(){
-    Table* table = askAndGetTable();
-    std::cout << *table;
-    welcomePage();
+void Bar::showInfoOfTable(int table_number){
+    std::cout << *tables[table_number-1];
 }
 void Bar::showMenu(){
     for(auto& t : menu){

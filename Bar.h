@@ -30,8 +30,10 @@ class Bar{
     int getOpenIncome();
     int getTotalSeatedTables();
     void addSeatedTable();
-    Table* askAndGetTable();
+    Table* GetTable(int table_number);
+    std::map<int , Item> setMenu();
     std::map<int , Item> getMenu();
+
 
     //static function - only function for inside use.
     bool checkTableIsOpen(int num_of_table);
@@ -40,12 +42,13 @@ class Bar{
     
     //System Functions.
     void welcomePage();
-    void openNewTable();
+    void openNewTable(int num_of_table);
     //void openNewTable();
     void createOrder();
+    void addItemToTable(int num_of_table , int item_index);
     void removeElementFromTable();
-    void closeBill();
-    void showInfoOfTable();
+    void closeBill(int table_number , int amount);
+    void showInfoOfTable(int table_number);
     void daySummery();
     void endDay();    
     void showMenu();

@@ -61,7 +61,7 @@ std::ostream& operator<<(std::ostream& os , const Table& table){
     os<<"Items"<<std::endl;
     for(int i=0 ; i < table.items.size() ; i++)
     {
-        os<<table.items[i]->getName()<<"-"<<table.items[i]->getPrice()<<std::endl;
+        os<<table.items[i]->getName()<<"- "<<table.items[i]->getPrice()<<std::endl;
     }
     os<<"**************************************************"<<std::endl;    
     return os;
