@@ -84,6 +84,13 @@ void TEST4(){
     Bar bar(10);
     bar.createOrder();
     bar.showInfoOfTable();
+    bar.closeBill();
+}
+void TEST5(){
+    Bar bar(10);
+    bar.createOrder();
+    
+    bar.closeBill();
 }
 int main()
 {
@@ -92,7 +99,7 @@ int main()
     //    TEST3();
     
  //  TEST2();
- TEST4();
+ TEST5();
 
    std::cout<<("all test pass");
 }

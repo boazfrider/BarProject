@@ -37,7 +37,7 @@ Bar::Bar(){
    
     for(int i=0 ; i<20 ; i++)
     {
-        Table* table=new Table(i);
+        Table* table=new Table(i+1);
         tables.push_back(table);
     }
     //insert the menu from file to map.
@@ -50,7 +50,7 @@ Bar::Bar(){
 Bar::Bar(int num_of_tables_to_open){
 
     for(int i = 0 ; i<num_of_tables_to_open ; i++){
-        Table* table=new Table(i);
+        Table* table=new Table(i+1);
         tables.push_back(table);
     }
     total_income=0;
@@ -88,7 +88,7 @@ Table* Bar::askAndGetTable(){
 }
 
 bool Bar::checkTableIsOpen(int num_of_table){
-    return tables[num_of_table]->GetTableIsOpen();
+    return tables[num_of_table-1]->GetTableIsOpen();
 }
 void Bar::addTototalIncome(int amount_to_add){
     total_income+=amount_to_add;
@@ -97,7 +97,7 @@ void Bar::addOpenIncome(int amount_to_add){
     total_open_income+=amount_to_add;
 }
 void Bar::welcomePage(){
-    std::cout<<"HELLO";
+    std::cout<<"HELLO"<<std::endl;
 
 }
 
@@ -137,9 +137,22 @@ void Bar::removeElementFromTable(){
 void Bar::closeBill(){
     Table* table = askAndGetTable();
     int amount=0;
-    std::cout<<"pay amount ?" <<std::endl;
+   again: std::cout<<"pay amount ?" <<std::endl;
     std::cin>>amount;
-    table->SubOpenBill(amount);
+    try{
+            table->SubOpenBill(amount);
+
+    }
+    catch(std::overflow_error& err)
+    {
+        goto again;
+    }
+    if(table->getOpenBill()==0){
+        std::ofstream history;
+        history.open("history.txt", std::ios::out | std::ios::app);
+        history << *table;
+        history.close();
+    }
 }
 void Bar::showInfoOfTable(){
     Table* table = askAndGetTable();

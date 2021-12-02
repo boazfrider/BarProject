@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include<ctime>
 class Table{
     private:
         int table_number;
