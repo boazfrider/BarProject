@@ -86,12 +86,12 @@ Table* Bar::GetTable(int table_number){
 }
 
 void Bar::checkValidTableNum(int num_of_table){
-    if(num_of_table<0 || num_of_table>=tables.size())
+    if(num_of_table<=0 || num_of_table>tables.size())
          throw InvalidNumOfTable("The number of table dosent exist");
 }
 void Bar::checkTableIsOpen(int num_of_table){
-    if( tables[num_of_table-1]->GetTableIsOpen())
-        throw TableAlreadyOpen("The table already open");
+    if( tables[num_of_table-1]->GetTableIsOpen()==false)
+        throw TableAlreadyOpen("The table is not open");
 }
 void Bar::addTototalIncome(int amount_to_add){
     total_income+=amount_to_add;
@@ -103,13 +103,19 @@ void Bar::addOpenIncome(int amount_to_add){
 void Bar::openNewTable(int num_of_table){
 
     checkValidTableNum(num_of_table);
-    checkTableIsOpen(num_of_table);
+   //checkTableIsOpen(num_of_table);
+   if(tables.at(num_of_table-1)->GetTableIsOpen()==true)
+   {
+       throw TableAlreadyOpen("The table Already open !");
+   }
     
     tables[num_of_table-1]->setTableCondition(true);
     total_seated_table++;
 }
 
 void Bar::addItemToTable(int num_of_table,int item_index){
+    checkValidTableNum(num_of_table);
+    checkTableIsOpen(num_of_table);
     tables[num_of_table-1]->AddItem(&menu[item_index]);
     addOpenIncome(menu[item_index].getPrice());
     addTototalIncome(menu[item_index].getPrice());

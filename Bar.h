@@ -46,7 +46,7 @@ class Bar{
     void welcomePage();
     void openNewTable(int num_of_table);
     //void openNewTable();
-    void createOrder();
+    //void createOrder();
     void addItemToTable(int num_of_table , int item_index);
     void removeElementFromTable();
     void closeBill(int table_number , int amount);
