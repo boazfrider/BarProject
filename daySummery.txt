@@ -34,3 +34,9 @@ Total seated tables : 1
 Total Income : 25
 Total Open Income 25
 ******************************************
+Mon Dec 06 22:25:13 2021
+
+Total seated tables : 2
+Total Income : 80
+Total Open Income 54
+******************************************

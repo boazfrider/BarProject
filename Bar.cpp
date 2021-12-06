@@ -128,7 +128,7 @@ void Bar::removeElementFromTable(){
 
 void Bar::closeBill(int table_number , int amount){
     checkValidTableNum(table_number);
-
+    checkTableIsOpen(table_number);
     Table* table = GetTable(table_number);
     if(amount > table->getOpenBill())
     {
