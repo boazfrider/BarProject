@@ -1,0 +1,24 @@
+Mon Dec 06 19:29:20 2021
+
+Total seated tables : 1
+Total Income : 65
+Total Open Income -50
+******************************************
+Mon Dec 06 19:31:02 2021
+
+Total seated tables : 1
+Total Income : 65
+Total Open Income -50
+******************************************
+Mon Dec 06 19:33:38 2021
+
+Total seated tables : 1
+Total Income : 65
+Total Open Income 0
+******************************************
+Mon Dec 06 19:33:57 2021
+
+Total seated tables : 1
+Total Income : 65
+Total Open Income 15
+******************************************

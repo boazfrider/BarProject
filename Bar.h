@@ -37,7 +37,8 @@ class Bar{
 
 
     //static function - only function for inside use.
-    bool checkTableIsOpen(int num_of_table);
+    void checkValidTableNum(int num_of_table);
+    void checkTableIsOpen(int num_of_table);
     void addTototalIncome(int amount_to_add);
     void addOpenIncome(int amount_to_add); 
     
@@ -52,7 +53,6 @@ class Bar{
     void showInfoOfTable(int table_number);
     void daySummery();
     void endDay();    
-    void showMenu();
 }; 
  
 #endif

@@ -62,3 +62,36 @@ Open Bill : 0
 Items
 Half hoegaarden -25
 **************************************************
+**************************************************
+Mon Dec 06 19:29:20 2021
+
+Table number : 1
+Total Bill :65
+Open Bill : 0
+Items
+Half hoegaarden - 25
+Half corona- 25
+Adamame- 15
+**************************************************
+**************************************************
+Mon Dec 06 19:31:02 2021
+
+Table number : 1
+Total Bill :65
+Open Bill : 0
+Items
+Half hoegaarden - 25
+Half corona- 25
+Adamame- 15
+**************************************************
+**************************************************
+Mon Dec 06 19:33:38 2021
+
+Table number : 1
+Total Bill :65
+Open Bill : 0
+Items
+Half hoegaarden - 25
+Half corona- 25
+Adamame- 15
+**************************************************

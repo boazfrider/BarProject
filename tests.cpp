@@ -50,15 +50,32 @@ void TEST5(){
     bar.addItemToTable(1,2);
     bar.addItemToTable(1,7);
     bar.showInfoOfTable(1);
-    bar.closeBill(1,350);
+    bar.closeBill(1,50);
     bar.showInfoOfTable(1);
+    bar.daySummery();
     }
     catch(std::overflow_error& err)
     {
         std::cout<<err.what()<<std::endl;
     }
-    
+    catch(std::exception& err)
+    {
+        std::cout<<err.what()<<std::endl;
+    }
    
+}
+void TEST6(){
+    Bar bar(10);
+    try{
+        bar.openNewTable(1);
+        bar.openNewTable(1);
+    }
+    catch(TableAlreadyOpen& err)
+    {
+        std::cout<<err.what();
+    }
+    
+
 }
 int main()
 {
@@ -67,7 +84,8 @@ int main()
     //    TEST3();
     
  //  TEST2();
- TEST5();
+ //TEST5();
+ TEST6();
 
    std::cout<<("all test pass");
 }
