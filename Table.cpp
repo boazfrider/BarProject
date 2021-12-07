@@ -66,3 +66,10 @@ std::ostream& operator<<(std::ostream& os , const Table& table){
     os<<"**************************************************"<<std::endl;    
     return os;
 }
+
+void Table::Clear(){
+    total_bill=0;
+    open_bill=0;
+    table_catch=false;
+    items.clear();
+}

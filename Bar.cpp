@@ -167,3 +167,12 @@ void Bar::daySummery(){
         day_summary <<"******************************************" << std::endl;
         day_summary.close();
 }
+
+void Bar::closeTable(int table_number){
+    Table* table = GetTable(table_number);
+    if(table->getOpenBill()!=0)
+    {
+        throw TableStillNeedToPay("The table still need to pay !");
+    }
+  table->Clear();
+}

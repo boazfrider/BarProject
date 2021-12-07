@@ -112,6 +112,7 @@ void system(){
     std::cout<<"4 - Close Bill" <<std::endl;
     std::cout<<"5 - Show Information about table"<<std::endl;
     std::cout<<"6 - Day Summery "<<std::endl;
+    std::cout<<"7 - Close Table"<<std::endl;
     std::cout<< "-1 - exit" <<std::endl;
     std::cout<<"Which operation would you like to do ? "<<std::endl;
     std::cin>>funcnum;
@@ -187,6 +188,20 @@ void system(){
         case(6):
             bar.daySummery();
             break;
+        case(7):
+            std::cout<<"       CLEAR TABLE SECTION         "<<std::endl;  
+             int num_table7;
+             std::cout<<"Which Table you sit ? "<<std::endl;
+             std::cin>>num_table7 ;
+             try{
+             bar.closeTable(num_table7);
+             }
+             catch(std::exception& err){
+            std::cout<<err.what()<<std::endl;
+            std::cout<<" your order was canceld , try again !";
+            break;
+             }
+
     }
     }while(funcnum!=-1);
         

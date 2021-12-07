@@ -26,6 +26,7 @@ class Table{
     void setTableCondition(bool cond);
     void SubOpenBill(int paid_amount);
     void AddItem(Item* item);
+    void Clear();
 
     friend std::ostream& operator<<(std::ostream& os , const Table& table);
 };

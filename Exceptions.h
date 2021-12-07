@@ -34,5 +34,14 @@ class TableAlreadyOpen : public std::exception{
         }
 };
 
+class TableStillNeedToPay : public std::exception{
+    private:
+        std::string message;
+    public:
+        explicit TableStillNeedToPay(const std::string& message);
+        const char* what() const noexcept override{
+            return message.c_str();
+        }
+};
 
 #endif

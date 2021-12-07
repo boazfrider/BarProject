@@ -52,6 +52,7 @@ class Bar{
     void closeBill(int table_number , int amount);
     void showInfoOfTable(int table_number);
     void daySummery();
+    void closeTable(int table_number);
     void endDay();    
 }; 
  
